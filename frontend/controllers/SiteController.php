@@ -2,6 +2,7 @@
 namespace frontend\controllers;
 
 use Yii;
+use common\models\Comment;
 use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
@@ -72,8 +73,21 @@ class SiteController extends Controller
      */
     public function actionIndex()
     {
-        return $this->render('index');
+       $model = new Comment();
+        if ($model->load(Yii::$app->request->post())) {
+            $model->is_active  = 0;
+            $model->created_at = date('Y-m-d H:i:s');
+            $model->updated_at = date('Y-m-d H:i:s');
+            $model->save();
+            Yii::$app->session->setFlash('success', 'Thank you! Your comment has been added successfully. It will be available after moderation ;)');
+            return $this->redirect('/');
+        }
+        
+        return $this->render('comments', [
+            'model' => $model,
+        ]);
     }
+    
 
     /**
      * Logs in a user.
