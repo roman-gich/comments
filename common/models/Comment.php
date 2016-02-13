@@ -49,7 +49,7 @@ class Comment extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'is_active' => 'Is Active',
+            'is_active' => 'Status',
             'value' => 'Comment',
             'user_name' => 'User Name',
             'user_email' => 'User Email',

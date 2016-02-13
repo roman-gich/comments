@@ -24,7 +24,7 @@ $this->params['breadcrumbs'][] = $this->title;
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
             'pagination' => [
-                'pageSize' => 3,
+                'pageSize' => 5,
             ],
         ]);
         

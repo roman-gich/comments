@@ -55,6 +55,7 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
+        $this->redirect(['/comment/index'],301);
         return $this->render('index');
     }
 
